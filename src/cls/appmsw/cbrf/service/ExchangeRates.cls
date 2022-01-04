@@ -25,7 +25,7 @@ Method OnProcessInput(pInput As %RegisteredObject, Output pOutput As %Registered
 	set sc=$$$OK
 	$$$TRACE("---Start")
 	// Let's put the date in the format $H
-	set DateH=$system.SQL.TODATE(##class(appmsw.cbrf.tables.ExchangeRatesDay).getDate2DDMMYYYY(Day),"DD.MM.YYYY") 
+	set DateH=$system.SQL.TODATE(##class(appmsw.cbrf.tabexDay).getDate2DDMMYYYY(Day),"DD.MM.YYYY") 
 	// Loop backwards by dates
 	set CountDay=..CountDay
 	set:'CountDay CountDay=10
@@ -44,11 +44,11 @@ Method OnProcessInput(pInput As %RegisteredObject, Output pOutput As %Registered
 Method LoadDate(Day, ByRef IfLoaded) As %Status
 {
  s st=$$$OK
- s obj=##class(appmsw.cbrf.tables.ExchangeRatesDay).GetByDay(Day)
+ s obj=##class(appmsw.cbrf.tabexDay).GetByDay(Day)
 	if '$isobject(obj) {
 		s URL=..URL
 		s:URL="" URL="http://www.cbr.ru/scripts/xml_daily.asp?date_req="
-		set st=##class(appmsw.cbrf.tables.ExchangeRatesDay).LoadDay(URL,Day,.count)
+		set st=##class(appmsw.cbrf.tabexDay).LoadDay(URL,Day,.count)
 		$$$TRACE(Day_" Load count: "_$g(count))
 	} else {
 		$$$TRACE(Day_" Boot call from central bank is not required")

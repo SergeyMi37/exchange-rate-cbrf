@@ -1,5 +1,5 @@
 /// Daily Loading the Exchange rate of the Central Bank of the Russian Federation
-Class appmsw.cbrf.tables.ExchangeRates Extends (%Persistent, %XML.Adaptor)
+Class appmsw.cbrf.tabex Extends (%Persistent, %XML.Adaptor)
 {
 
 Property DateReq As %Date(FORMAT = 3);
@@ -27,7 +27,7 @@ Property Value As %String(XMLNAME = "Value");
 
 Storage Default
 {
-<Data name="ExchangeRatesDefaultData">
+<Data name="tabexDefaultData">
 <Value name="1">
 <Value>%%CLASSNAME</Value>
 </Value>
@@ -35,38 +35,38 @@ Storage Default
 <Value>DateReq</Value>
 </Value>
 <Value name="3">
-<Value>LastChanged</Value>
-</Value>
-<Value name="4">
-<Value>Date</Value>
-</Value>
-<Value name="5">
-<Value>ID</Value>
-</Value>
-<Value name="6">
-<Value>NumCode</Value>
-</Value>
-<Value name="7">
-<Value>CharCode</Value>
-</Value>
-<Value name="8">
-<Value>Name</Value>
-</Value>
-<Value name="9">
-<Value>Nominal</Value>
-</Value>
-<Value name="10">
-<Value>Value</Value>
-</Value>
-<Value name="11">
 <Value>DateExchangeRates</Value>
 </Value>
+<Value name="4">
+<Value>LastChanged</Value>
+</Value>
+<Value name="5">
+<Value>Date</Value>
+</Value>
+<Value name="6">
+<Value>ID</Value>
+</Value>
+<Value name="7">
+<Value>NumCode</Value>
+</Value>
+<Value name="8">
+<Value>CharCode</Value>
+</Value>
+<Value name="9">
+<Value>Name</Value>
+</Value>
+<Value name="10">
+<Value>Nominal</Value>
+</Value>
+<Value name="11">
+<Value>Value</Value>
+</Value>
 </Data>
-<DataLocation>^appmsw.cbrfA329.ExchangeRatesD</DataLocation>
-<DefaultData>ExchangeRatesDefaultData</DefaultData>
-<IdLocation>^appmsw.cbrfA329.ExchangeRatesD</IdLocation>
-<IndexLocation>^appmsw.cbrfA329.ExchangeRatesI</IndexLocation>
-<StreamLocation>^appmsw.cbrfA329.ExchangeRatesS</StreamLocation>
+<DataLocation>^appmsw.cbrf.tabexD</DataLocation>
+<DefaultData>tabexDefaultData</DefaultData>
+<IdLocation>^appmsw.cbrf.tabexD</IdLocation>
+<IndexLocation>^appmsw.cbrf.tabexI</IndexLocation>
+<StreamLocation>^appmsw.cbrf.tabexS</StreamLocation>
 <Type>%Storage.Persistent</Type>
 }
 

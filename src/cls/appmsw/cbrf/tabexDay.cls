@@ -1,5 +1,5 @@
 /// Loading the Exchange rate of the Central Bank of the Russian Federation
-Class appmsw.cbrf.tables.ExchangeRatesDay Extends (%Persistent, %XML.Adaptor)
+Class appmsw.cbrf.tabexDay Extends (%Persistent, %XML.Adaptor)
 {
 
 Property Date As %String(XMLNAME = "Date", XMLPROJECTION = "attribute");
@@ -8,27 +8,29 @@ Property DateReq As %Date(FORMAT = 3);
 
 Index DateReqIndex On DateReq [ Unique ];
 
-Property Values As list Of appmsw.cbrf.tables.ExchangeRates(XMLNAME = "Valute", XMLPROJECTION = "ELEMENT");
+Property Values As list Of appmsw.cbrf.tabex(XMLNAME = "Valute", XMLPROJECTION = "ELEMENT");
 
-/// Write $System.Status.GetErrorText(##class(appmsw.cbrf.tables.ExchangeRatesDay).CheckDay("2021-12-12",.cnt))
-ClassMethod CheckDay(Date As %String, cnt) As appmsw.cbrf.tables.ExchangeRatesDay
+/// Write $System.Status.GetErrorText(##class(appmsw.cbrf.tabexDay).CheckDay("2021-12-12",.cnt))
+ClassMethod CheckDay(Date As %String, cnt) As appmsw.cbrf.tabexDay
 {
+	set sc=$$$OK
+		,cnt=0
 	set Date=$system.SQL.TODATE(Date,"YYYY-MM-DD") 
-	set sql="SELECT ID FROM appmsw_cbrf_tables.ExchangeRatesDay WHERE DateReq='"_Date_"'",error=$$$NULLOREF
+	set sql="SELECT ID FROM appmsw_cbrf.tabexDay WHERE DateReq='"_Date_"'"
+		,error=$$$NULLOREF
 	set query=##class(%ResultSet.SQL).%Prepare(sql,.error)
 	quit:$isobject(error) $$$ERROR($$$GeneralError,error.Message)
-	set sc=$$$OK,cnt=0
 	while query.%Next() {
 		set cnt=cnt+1
 	}
 	quit sc
 }
 
-/// set obj=##class(appmsw.cbrf.tables.ExchangeRatesDay).GetByDay("2021-12-12")
+/// set obj=##class(appmsw.cbrf.tabexDay).GetByDay("2021-12-12")
 ClassMethod GetByDay(Date As %String) As %Status
 {
 	set Date=$system.SQL.TODATE(Date,"YYYY-MM-DD") 
-	set sql="SELECT ID FROM appmsw_cbrf_tables.ExchangeRatesDay WHERE DateReq='"_Date_"'",error=$$$NULLOREF
+	set sql="SELECT ID FROM appmsw_cbrf.tabexDay WHERE DateReq='"_Date_"'",error=$$$NULLOREF
 	set query=##class(%ResultSet.SQL).%Prepare(sql,.error)
 	quit:$isobject(error) $$$ERROR($$$GeneralError,error.Message)
 	set obj=""
@@ -38,23 +40,23 @@ ClassMethod GetByDay(Date As %String) As %Status
 	quit obj
 }
 
-/// Write $System.Status.GetErrorText(##class(appmsw.cbrf.tables.ExchangeRatesDay).KillDay("2021-12-12"))
-/// Set tSC = ##class(appmsw.cbrf.tables.ExchangeRatesDay).%KillExtent() Set tSC = ##class(appmsw.cbrf.tables.ExchangeRates).%KillExtent()
+/// Write $System.Status.GetErrorText(##class(appmsw.cbrf.tabexDay).KillDay("2021-12-12"))
+/// Set tSC = ##class(appmsw.cbrf.tabexDay).%KillExtent() Set tSC = ##class(appmsw.cbrf.tabex).%KillExtent()
 ClassMethod KillDay(Date As %String) As %Status
 {
 	set Date=$system.SQL.TODATE(Date,"YYYY-MM-DD") 
-	set sql="SELECT ID1 FROM appmsw_cbrf_tables.ExchangeRatesDay WHERE DateReq='"_Date_"'",error=$$$NULLOREF
+	set sql="SELECT ID1 FROM appmsw_cbrf.tabexDay WHERE DateReq='"_Date_"'",error=$$$NULLOREF
 	set query=##class(%ResultSet.SQL).%Prepare(sql,.error)
 	quit:$isobject(error) $$$ERROR($$$GeneralError,error.Message)
 	set sc=$$$OK
 	while query.%Next() {
 		;w !,query.ID1.%Id()
-		s sc=##class(appmsw.cbrf.tables.ExchangeRates).%DeleteId(query.ID1.%Id())
+		s sc=##class(appmsw.cbrf.tabex).%DeleteId(query.ID1.%Id())
 	}
 	quit sc
 }
 
-/// write ##class(appmsw.cbrf.tables.ExchangeRatesDay).getDate2DDMMYYYY("2021-12-12")
+/// write ##class(appmsw.cbrf.tabexDay).getDate2DDMMYYYY("2021-12-12")
 ClassMethod getDate2DDMMYYYY(sDate As %String) As %String
 {
 	if sDate["-" s date=$p(sDate,"-",3)_"."_$p(sDate,"-",2)_"."_$p(sDate,"-",1)
@@ -63,7 +65,7 @@ ClassMethod getDate2DDMMYYYY(sDate As %String) As %String
 	quit $g(date)
 }
 
-/// write ##class(appmsw.cbrf.tables.ExchangeRatesDay).LoadDay("http://www.cbr.ru/scripts/xml_daily.asp?date_req=","12.12.2021")
+/// write ##class(appmsw.cbrf.tabexDay).LoadDay("http://www.cbr.ru/scripts/xml_daily.asp?date_req=","12.12.2021")
 ClassMethod LoadDay(URL As %String, Date, Count, outObj) As %Status
 {
     #Dim Status As %Status = $$$OK
@@ -78,7 +80,7 @@ ClassMethod LoadDay(URL As %String, Date, Count, outObj) As %Status
 	
 	//;d ..KillDay($zd(DateReq,3))
     While Reader.Next(.Object, .Status) {
-        #Dim Object As appmsw.cbrf.tables.ExchangeRatesDay
+        #Dim Object As appmsw.cbrf.tabexDay
 
         If $isobject(Object) {
 	        
@@ -101,7 +103,7 @@ ClassMethod LoadDay(URL As %String, Date, Count, outObj) As %Status
 
 Storage Default
 {
-<Data name="ExchangeRatesDayDefaultData">
+<Data name="tabexDayDefaultData">
 <Value name="1">
 <Value>%%CLASSNAME</Value>
 </Value>
@@ -115,11 +117,11 @@ Storage Default
 <Value>Values</Value>
 </Value>
 </Data>
-<DataLocation>^appmsw.cbrA329.ExchangeRatEAE5D</DataLocation>
-<DefaultData>ExchangeRatesDayDefaultData</DefaultData>
-<IdLocation>^appmsw.cbrA329.ExchangeRatEAE5D</IdLocation>
-<IndexLocation>^appmsw.cbrA329.ExchangeRatEAE5I</IndexLocation>
-<StreamLocation>^appmsw.cbrA329.ExchangeRatEAE5S</StreamLocation>
+<DataLocation>^appmsw.cbrf.tabexDayD</DataLocation>
+<DefaultData>tabexDayDefaultData</DefaultData>
+<IdLocation>^appmsw.cbrf.tabexDayD</IdLocation>
+<IndexLocation>^appmsw.cbrf.tabexDayI</IndexLocation>
+<StreamLocation>^appmsw.cbrf.tabexDayS</StreamLocation>
 <Type>%Storage.Persistent</Type>
 }
 
