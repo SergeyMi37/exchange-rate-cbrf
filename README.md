@@ -14,9 +14,7 @@ Database of exchange rates of the Central Bank of the Russian Federation. The da
  
 ## What's new
 
-A full-cycle project, from the initial initialization of data, products of daily updates from the official website, a course delivery service upon request and receiving a schedule for any period.
-
-Load http://your-host:your-port/apptoolsrest/a/infochest
+The project contains a service for initial data initialization and daily updates from the official website of the Central Bank of the Russian Federation, REST service for obtaining exchange rates on request for any period.
 
 ## Installation with ZPM
 
@@ -52,12 +50,18 @@ $ docker-compose build
 $ docker-compose up -d
 ```
 
-## How to Test it
-Open IRIS terminal:
+## How to Test it Open IRIS terminal:
 
 ```
 $ docker-compose exec iris iris session iris
-USER>
-USER>zpm
-zpm:USER>install exchange-rate-cbrf
+
+USER>D $System.SQL.Shell()
+[SQL]USER>>select CharCode, DateExchangeRates, Nominal, NumCode, Value from appmsw_cbrf.tabex where DateExchangeRates >= '2022-01-04' and DateExchangeRates <= '20221-01-05'
 ```
+![](https://raw.githubusercontent.com/sergeymi37/exchange-rate-cbrf/master/doc/Screenshot_9.png)
+
+## How to Test it Open link:
+```
+http://localhost:52663/cbrf-rate/exchange/2021-03-03,2022-01-05
+```
+![](https://raw.githubusercontent.com/sergeymi37/exchange-rate-cbrf/master/doc/Screenshot_1.png)

@@ -1,5 +1,3 @@
-Include apptools.core
-
 Class appmsw.cbrf.util [ Abstract ]
 {
 
@@ -9,11 +7,11 @@ ClassMethod init() As %Status
     return $$$OK
 }
 
-/// do ##class(appmsw.cbrf.util).makeproject("d:\_proj\!\cbrf\")
-ClassMethod makeproject(dir) As %Status
+/// do ##class(appmsw.cbrf.util).MakeProject("d:\_proj\!\cbrf\")
+ClassMethod MakeProject(dir) As %Status
 {
 	do ##class(apptools.core.code).exp(dir_"src","appmsw")
-	
+	#define slash $s($zversion(1)=3:"/",1:"\")	
 	set List("appmsw.cbrf.tabexDayD.GBL")=""
 	s target=dir_"src"_$$$slash_"gbl"_$$$slash_"appmsw.cbrf.tabexDayD.xml"
 	Write $SYSTEM.OBJ.Export(.List, target)

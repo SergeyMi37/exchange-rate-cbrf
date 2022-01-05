@@ -12,12 +12,6 @@
 	<CopyrightDate>2022</CopyrightDate>
 	<License>https://www.cbr.ru/eng/about/</License>
 	</Author>
-	<Dependencies>
-	  <ModuleReference>
-      <Name>apptools-admin</Name>
-        <Version>1.1.*</Version>
-      </ModuleReference>
-    </Dependencies>
 	<SourcesRoot>src</SourcesRoot>
 	<Invokes>
         <Invoke Class="appmsw.cbrf.util" Method="init"></Invoke>
