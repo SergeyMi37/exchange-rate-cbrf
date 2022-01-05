@@ -10,9 +10,7 @@
  <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/SergeyMi37/exchange-rate-cbrf">
  
 Database of exchange rates of the Central Bank of the Russian Federation. The database usage rights can be found in the [section](https://www.cbr.ru/eng/about/).
- The data is real, it can be used in accounting and forecasting programs
- 
-## What's new
+The data is real, [it can be used in accounting and forecasting programs](http://www.cbr.ru/scripts/xml_daily.asp?date_req=01.01.2022)  
 
 The project contains a service for initial data initialization and daily updates from the official website of the Central Bank of the Russian Federation, REST service for obtaining exchange rates on request for any period.
 
@@ -50,7 +48,8 @@ $ docker-compose build
 $ docker-compose up -d
 ```
 
-## How to Test it Open IRIS terminal:
+## How to Test it
+Open IRIS terminal:
 
 ```
 $ docker-compose exec iris iris session iris
@@ -60,8 +59,11 @@ USER>D $System.SQL.Shell()
 ```
 ![](https://raw.githubusercontent.com/sergeymi37/exchange-rate-cbrf/master/doc/Screenshot_9.png)
 
-## How to Test it Open link:
+## To check the service, open the link:
 ```
 http://localhost:52663/cbrf-rate/exchange/2021-03-03,2022-01-05
 ```
 ![](https://raw.githubusercontent.com/sergeymi37/exchange-rate-cbrf/master/doc/Screenshot_1.png)
+
+## Products for daily currency rate updates:
+![](https://raw.githubusercontent.com/sergeymi37/exchange-rate-cbrf/master/doc/Screenshot_2.png)
