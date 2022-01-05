@@ -13,9 +13,7 @@
 	<License>https://www.cbr.ru/eng/about/</License>
 	</Author>
 	<SourcesRoot>src</SourcesRoot>
-	<Invokes>
-        <Invoke Class="appmsw.cbrf.util" Method="init"></Invoke>
-    </Invokes>
+	<Invoke Class="appmsw.cbrf.util" Method="init" Phase="Activate" When="After"/>
 	<CSPApplication CookiePath="/cbrf-rate/" DispatchClass="appmsw.cbrf.rest" MatchRoles=":{$dbrole}" PasswordAuthEnabled="1" Recurse="1" UnauthenticatedEnabled="0" Url="/cbrf-rate" UseSessionCookie="1"/>
 	<Resource Name="appmsw.cbrf.PKG"/>
 	<Resource Name="appmsw.cbrf.tabexDayD.GBL"/>

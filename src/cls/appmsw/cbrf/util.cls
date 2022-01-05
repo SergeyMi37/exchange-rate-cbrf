@@ -3,7 +3,10 @@ Class appmsw.cbrf.util [ Abstract ]
 
 ClassMethod init() As %Status
 {
-	do ##class(Ens.Director).StartProduction("appmsw.cbrf.production")
+	if '##class(Ens.Director).IsProductionRunning("appmsw.cbrf.production") {
+		job ##class(Ens.Director).StartProduction("appmsw.cbrf.production")
+		;do ##class(Ens.Director).SetAutoStart("appmsw.cbrf.production")
+	}
     return $$$OK
 }
 
@@ -11,29 +14,28 @@ ClassMethod init() As %Status
 ClassMethod MakeProject(dir) As %Status
 {
 	do ##class(apptools.core.code).exp(dir_"src","appmsw")
-	#define slash $s($zversion(1)=3:"/",1:"\")	
+
 	set List("appmsw.cbrf.tabexDayD.GBL")=""
-	s target=dir_"src"_$$$slash_"gbl"_$$$slash_"appmsw.cbrf.tabexDayD.xml"
+	set target=##class(%File).NormalizeFilename("appmsw.cbrf.tabexDayD.xml",dir_"src\gbl\")
 	Write $SYSTEM.OBJ.Export(.List, target)
 	
 	kill List
 	set List("appmsw.cbrf.tabexD.GBL")=""
-	s target=dir_$$$slash_"gbl"_$$$slash_"appmsw.cbrf.tabexD.xml"
+	set target=##class(%File).NormalizeFilename("appmsw.cbrf.tabexD.xml",dir_"src\gbl\")
 	Write $SYSTEM.OBJ.Export(.List, target)
 
-	;http://localhost:52774/cbrf-rate/exchange/2021-03-03,2021-03-05
-	d ..GetListApps($namespace,.list)
+	do ..GetListApps($namespace,.list)
 	set name=""
 	set tWebAppList=""
 	for { set name=$order(list(name)) quit:name=""
 		set tWebAppList=tWebAppList_name_","
 	}
 	do ..CreateModuleXML($namespace,dir,"exchange-rate-cbrf",,"Database of exchange rates of the Central Bank of the Russian Federation.","",$e(tWebAppList,1,*-1))
-
     return $$$OK
 }
 
 /// do ##class(appmsw.cbrf.util).initDb("2021-01-01","2021-01-10")
+/// http://localhost:52774/cbrf-rate/exchange/2021-03-03,2021-03-05
 ClassMethod initDb(from = "2021-01-01", to = "2021-12-31") As %Status
 {
 	for h=$zdh(from,3):1:$zdh(to,3) {
