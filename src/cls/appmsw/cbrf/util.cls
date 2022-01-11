@@ -54,7 +54,8 @@ ClassMethod initDb(from = "2021-01-01", to = "2021-12-31") As %Status
 ClassMethod CreateModuleXML(namespace, tPath, tName, tVersion = "1.0.0", tDescription = "", tKeywords = "", tWebAppList) As %Status
 {
 	;set st=##class(%ZPM.PackageManager.Developer.ModuleTemplate).GenerateTemplate(tPath)
-	Set tTemplate = ##class(%ZPM.PackageManager.Developer.ModuleTemplate).NewTemplate(tPath, tName, tVersion, tDescription, tKeywords)
+	Set tTemplate = $classmethod("%ZPM.PackageManager.Developer.ModuleTemplate","NewTemplate",tPath, tName, tVersion, tDescription, tKeywords)
+	;Set tTemplate = ##class(%ZPM.PackageManager.Developer.ModuleTemplate).NewTemplate(tPath, tName, tVersion, tDescription, tKeywords)
 	Return:'$IsObject(tTemplate) $$$ERROR($$$GeneralError,"Module creation error")
 	;Do tTemplate.SetAuthorProps(tAuthorPerson, tAuthorOrg, tAuthorLicense, tAuthorCopy, tAuthorNotes)
 	if namespace ;stupid line to please the quality of the code
