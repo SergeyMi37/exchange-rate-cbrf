@@ -14,6 +14,9 @@
 	</Author>
 	<SystemRequirements Version=">=2020.1" Interoperability="enabled" />
 	<SourcesRoot>src</SourcesRoot>
+	<Invoke Class="%EnsembleMgr" Method="EnableNamespace" Phase="Compile" When="Before" CheckStatus="true">
+	   <Arg>${namespace}</Arg>
+	</Invoke>
 	<Invoke Class="appmsw.cbrf.util" Method="init" Phase="Activate" When="After"/>
 	<CSPApplication CookiePath="/cbrf-rate/" DispatchClass="appmsw.cbrf.rest" MatchRoles=":{$dbrole}" PasswordAuthEnabled="1" Recurse="1" UnauthenticatedEnabled="0" Url="/cbrf-rate" UseSessionCookie="1"/>
 	<Resource Name="appmsw.cbrf.PKG"/>
