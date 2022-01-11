@@ -6,7 +6,7 @@ ClassMethod init() As %Status
 	if '##class(Ens.Director).IsProductionRunning("appmsw.cbrf.production") {
 	    w !,"Run prod"
 		job ##class(Ens.Director).StartProduction("appmsw.cbrf.production")::1
-		;do ##class(Ens.Director).SetAutoStart("appmsw.cbrf.production")
+		do ##class(Ens.Director).SetAutoStart("appmsw.cbrf.production")
 		else   w !," no job start"
 	}
     return $$$OK

@@ -23,6 +23,7 @@ ClassMethod Test(parameter) As %Status
 	&html<<h1>Status: OK!</h1><pre>>
 	zw %request
 	zw %response
+	zw parameter
 	&html<</pre>>
 	quit $$$OK
 }

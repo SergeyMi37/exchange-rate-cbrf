@@ -1,4 +1,4 @@
-ARG IMAGE=intersystemsdc/iris-community
+ARG IMAGE=intersystemsdc/iris-community:2021.2.0.617.0-zpm
 FROM $IMAGE
 
 USER root   
