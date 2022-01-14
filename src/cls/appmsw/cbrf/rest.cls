@@ -10,7 +10,10 @@ XData UrlMap [ XMLNamespace = "http://www.intersystems.com/urlmap" ]
 {
 <Routes>
 <Route Url="/a/:text" Method="GET" Call="apptools.lte.adminStatic:GetMain"/>
-<Route Url="/post-json" Method="POST" Call="jsonrpc"/>
+<Route Url="/get-html/:text" Method="GET" Call="apptools.core.rest:Index"/>
+<Route Url="/post-json" Method="POST" Call="apptools.core.rest:jsonrpc"/>
+<Route Url="/get-files/:text" Method="GET" Call="apptools.core.rest:Files"/>
+
 <Route Url="/testget/:text" Method="GET" Call="Test"/>  
 <Route Url="/exchange/:date" Method="GET" Call="exchange"/>
 </Routes>
