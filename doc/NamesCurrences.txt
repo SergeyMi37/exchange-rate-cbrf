@@ -1,35 +1,35 @@
-Currency	Rate
-036	AUD	1	Australian Dollar	52.8165
-944	AZN	1	Azerbaijan Manat	43.3024
-051	AMD	100	Armenia Dram	14.8899
-933	BYN	1	Belarussian Ruble	29.0312
-975	BGN	1	Bulgarian lev	42.5142
-986	BRL	1	Brazil Real	12.9506
-348	HUF	100	Hungarian Forint	22.5228
-410	KRW	1000	South Korean Won	62.1467
-344	HKD	10	Hong Kong Dollar	94.2913
-208	DKK	1	Danish Krone	11.1827
-840	USD	1	US Dollar	73.5708
-978	EUR	1	Euro	83.1571
-356	INR	100	Indian Rupee	96.6384
-398	KZT	100	Kazakhstan Tenge	16.7989
-124	CAD	1	Canadian Dollar	57.4413
-417	KGS	100	Kyrgyzstan Som	86.7373
-156	CNY	1	China Yuan	11.5525
-498	MDL	10	Moldova Lei	41.4483
-934	TMT	1	New Turkmenistan Manat	21.0503
-578	NOK	10	Norwegian Krone	81.6909
-985	PLN	1	Polish Zloty	17.9722
-946	RON	1	Romanian Leu	16.7985
-960	XDR	1	SDR	102.7446
-702	SGD	1	Singapore Dollar	53.9138
-972	TJS	10	Tajikistan Ruble	65.1646
-949	TRY	10	Turkish Lira	48.4624
-860	UZS	10000	Uzbekistan Sum	67.9315
-980	UAH	10	Ukrainian Hryvnia	27.0775
-826	GBP	1	British Pound Sterling	97.7903
-203	CZK	10	Czech Koruna	32.8720
-752	SEK	10	Swedish Krona	81.0751
-756	CHF	1	Swiss Franc	79.6997
-710	ZAR	10	S.African Rand	46.2050
-392	JPY	100	Japanese Yen	64.4595
+NumCode,CharCode,Name
+036,AUD,Australian Dollar
+944,AZN,Azerbaijan Manat
+051,AMD,Armenia Dram
+933,BYN,Belarussian Ruble
+975,BGN,Bulgarian lev
+986,BRL,Brazil Real
+348,HUF,Hungarian Forint
+410,KRW,South Korean Won
+344,HKD,Hong Kong Dollar
+208,DKK,Danish Krone
+840,USD,US Dollar
+978,EUR,Euro
+356,INR,Indian Rupee
+398,KZT,Kazakhstan Tenge
+124,CAD,Canadian Dollar
+417,KGS,Kyrgyzstan Som
+156,CNY,China Yuan
+498,MDL,Moldova Lei
+934,TMT,New Turkmenistan Manat
+578,NOK,Norwegian Krone
+985,PLN,Polish Zloty
+946,RON,Romanian Leu
+960,XDR,SDR
+702,SGD,Singapore Dollar
+972,TJS,Tajikistan Ruble
+949,TRY,Turkish Lira
+860,UZS,Uzbekistan Sum
+980,UAH,Ukrainian Hryvnia
+826,GBP,British Pound Sterling
+203,CZK,Czech Koruna
+752,SEK,Swedish Krona
+756,CHF,Swiss Franc
+710,ZAR,S.African Rand
+392,JPY,Japanese Yen
