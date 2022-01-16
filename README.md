@@ -15,8 +15,9 @@ The data is real, [it can be used in accounting and forecasting programs](http:/
 The project contains a service for initial data initialization and daily updates from the official website of the Central Bank of the Russian Federation, REST service for obtaining exchange rates on request for any period.
 
 ## What's new
-Implemented [Demo Repo](https://openexchange.intersystems.com/package/exchange-rate-cbrf-ui)
-[Demo online](https://cbrf.demo.community.intersystems.com/apptoolsrest/a/rate&class=appmsw.cbrf.rateinfo&namespace=USER#) available with password `superuser / SYS`
+# Implemented [Demo Repo](https://openexchange.intersystems.com/package/exchange-rate-cbrf-ui)
+
+# [Demo online](https://cbrf.demo.community.intersystems.com/apptoolsrest/a/rate&class=appmsw.cbrf.rateinfo&namespace=USER#) available with password `superuser / SYS`
 
 ## Installation with ZPM
 
