@@ -16,7 +16,7 @@ The project contains a service for initial data initialization and daily updates
 
 ## What's new
 Implemented [Demo Repo](https://openexchange.intersystems.com/package/exchange-rate-cbrf-ui)
-
+[Demo online](https://cbrf.demo.community.intersystems.com/apptoolsrest/a/rate&class=appmsw.cbrf.rateinfo&namespace=USER#) available with password `superuser / SYS`
 
 ## Installation with ZPM
 
